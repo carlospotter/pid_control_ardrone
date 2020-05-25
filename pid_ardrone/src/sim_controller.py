@@ -3,12 +3,13 @@
 #--------------------------------------------------------------------------------------------------------------------------
 # The following code has been adapted from the original code published in https://github.com/justagist/pid_control_ardrone
 # The modifications are all commented in the code and listed below:
-# Lines 39, 43, 44 and 46: Original values changed in order to comply with the UTM requirements.
-# Lines 274 to 278: This piece of coded was added to land the drone when it reaches the final point of the route.
+# Line 12: Imported the Empty from std_msgs.
+# Lines 40, 44, 45 and 47: Original values changed in order to comply with the UTM requirements.
+# Lines 275 to 279: This piece of coded was added to land the drone when it reaches the final point of the route.
 #--------------------------------------------------------------------------------------------------------------------------
 
 
-from std_msgs.msg import Bool
+from std_msgs.msg import Bool, Empty
 import rospy
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Twist, Vector3, PoseStamped
