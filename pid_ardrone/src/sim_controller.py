@@ -1,5 +1,13 @@
 #! /usr/bin/env python
 
+#--------------------------------------------------------------------------------------------------------------------------
+# The following code has been adapted from the original code published in https://github.com/justagist/pid_control_ardrone
+# The modifications are all commented in the code and listed below:
+# Lines 39, 43, 44 and 46: Original values changed in order to comply with the UTM requirements.
+# Lines 274 to 278: This piece of coded was added to land the drone when it reaches the final point of the route.
+#--------------------------------------------------------------------------------------------------------------------------
+
+
 from std_msgs.msg import Bool
 import rospy
 from nav_msgs.msg import Odometry
@@ -27,11 +35,15 @@ class pidcontroller:
         self.prev_time = [0.0,0.0,0.0,0.0]
         self.prev_error = [0.0,0.0,0.0,0.0]
         self.e_i = [0.0,0.0,0.0,0.0]
-        self.speed = 3
+        #self.speed = 3                         #Original value
+        self.speed = 7
         self.repeat_pilot = False
-        self.single_point_error = 0.001
-        self.multiple_point_error = 0.01
-        self.ang_error = 0.01
+        #self.single_point_error = 0.001        #Original value
+        #self.multiple_point_error = 0.01       #Original value
+        self.single_point_error = 0.5 
+        self.multiple_point_error = 0.5
+        #self.ang_error = 0.01                  #Original value
+        self.ang_error = 0.1
         self.length = 1
         steps = 1000
         self.dest_x=[]
@@ -259,6 +271,11 @@ class pidcontroller:
 
     def nextpoint(self,newpos,neworient,points_left,mode):
         loop_data = AutoPilotCmd(False,newpos,neworient,points_left,mode)
+        # Added the command to land the drone when the final point is reached:
+        if points_left == 1:
+            pub_land = rospy.Publisher('/ardrone/land', Empty, queue_size=1)
+            pub_land.publish(Empty())
+        # --------------------------------------------------------------------
         self.start_autopilot(loop_data)
         print 'going to next point'
             
