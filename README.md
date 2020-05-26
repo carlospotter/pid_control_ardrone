@@ -1,5 +1,5 @@
 # pid_control_ardrone
-PID controller for AR,Drone. Developed as part of Second-Semester Mini-Project for MSc Robotics at the University of Birmingham. 
+PID controller for AR,Drone. Developed originally by Saif Sidhik as part of Second-Semester Mini-Project for MSc Robotics at the University of Birmingham. 
 
 The controller uses ROS and depends on the ardrone_autonomy package (http://wiki.ros.org/ardrone_autonomy).
 This can be used on the actual drone or the simulator (for ros indigo: https://github.com/dougvk/tum_simulator).
@@ -21,3 +21,6 @@ Steps to run in simulation.
 3. Run sim_controller.py code in pid_ardrone package.
 4. Run ardrone_joy_keyboard.py in the ardrone_joy package.
 5. Control instructions will be shown.
+
+## Controller modifications:
+Some values of PID gains and tolerances of the controller were modified in order to comply with the UTM requirements for the development of the _ita_navigation_ package (https://github.com/carlospotter/ita_navigation). The automatic landing when the drone reaches the final point of its route was also added.
