@@ -25,7 +25,6 @@ import csv
 class pidcontroller:
     
 
-
     def __init__(self,kp=(0.5,0.5,0.5,0.5),kd=(0.1,0.1,0.1,0.0025),ki=(0.0,0.0,0.0,0.0)):
         self.kp = kp
         self.kd = kd
@@ -37,12 +36,12 @@ class pidcontroller:
         self.prev_error = [0.0,0.0,0.0,0.0]
         self.e_i = [0.0,0.0,0.0,0.0]
         #self.speed = 3                         #Original value
-        self.speed = 7
+        self.speed = 3 #7
         self.repeat_pilot = False
         #self.single_point_error = 0.001        #Original value
         #self.multiple_point_error = 0.01       #Original value
-        self.single_point_error = 0.5 
-        self.multiple_point_error = 0.5
+        self.single_point_error = 0.2 
+        self.multiple_point_error = 0.2
         #self.ang_error = 0.01                  #Original value
         self.ang_error = 0.1
         self.length = 1
