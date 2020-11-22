@@ -2,7 +2,7 @@
 PID controller for AR,Drone. Developed originally by Saif Sidhik as part of Second-Semester Mini-Project for MSc Robotics at the University of Birmingham. 
 
 The controller uses ROS and depends on the ardrone_autonomy package (http://wiki.ros.org/ardrone_autonomy).
-This can be used on the actual drone or the simulator (for ros indigo: https://github.com/dougvk/tum_simulator).
+This can be used on the actual drone or the simulator (for ros kinetic: https://github.com/angelsantamaria/tum_simulator).
 
 ON THE AR.DRONE:
 The controller requires a motion capture system.
